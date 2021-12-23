@@ -10,14 +10,14 @@ class iniEnumSSH():
 
     def start(self):
         self.dict = {"host": self.host}
-        self.sshaudit()
+        self.ssh_audit()
         self.ssh_keyscan()
         self.ssh_nmap()
 
     def get_dict(self):
         return self.dict
 
-    def sshaudit(self):
+    def ssh_audit(self):
         try:
             ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
             response_ssh_audit = os.popen("ssh-audit " +  self.host + " -p" + str(self.port)).read()

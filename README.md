@@ -19,7 +19,7 @@ By default, Windows and Linux ahve ssh-keyscan preinstalled, to make sure, execu
 ssh-keyscan
 ```
 Expected output:
-```shell
+```cmd
 C:\Users\KAIO>ssh-keyscan                                                                                               usage: ssh-keyscan [-46cDHv] [-f file] [-p port] [-T timeout] [-t type]                                                                    [host | addrlist namelist] 
 ```
 

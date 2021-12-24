@@ -19,7 +19,7 @@ By default, Windows and Linux ahve ssh-keyscan preinstalled, to make sure, execu
 ssh-keyscan
 ```
 Expected output:
-```cmd
+```console
 C:\Users\KAIO>ssh-keyscan                                                                                               usage: ssh-keyscan [-46cDHv] [-f file] [-p port] [-T timeout] [-t type]                                                                    [host | addrlist namelist] 
 ```
 
@@ -27,32 +27,46 @@ At the end, configure my [nmap-python repository](https://kaio6fellipe.github.io
 
 ![folders](./images/folders.png)
 
-# Details (In progress)
+# Details
 
 The ssh_enumeration.py file contains one class:
 - iniEnumSSH
 
     This class contains the methods:
     - ssh_audit
+      - This method will open a subprocess to execute this line: ```ssh-audit (host) -p(port)```
+      - After that, the generated output will be validated and formated to be included in a dict
     - ssh_keyscan
+      - This method will open a subprocess to execute this line : ```ssh-keyscan -t rsa (host) -p (port)```
+      - After that, the generated output will be validated and formated to be included in a dict
     - ssh_nmap
+      - This method will execute the function nmapCustomScanProcess present in the nmap-python module using the following parameters:
+        - ```-sC -sV```
+        - ```--script ssh2-enum-algos```
+        - ```--script ssh-hostkey --script-args ssh_hostkey=full```
+        - ```--script ssh-auth-methods --script-args="ssh.user=root```
     - start
+      - This method will execute all the other methods
     - get_dict
+      - Return of the result dict
 
 # Example (In progress)
 
 I usually use this class like that:
 
 ```python
-# Some example in python right here
 import ssh_enumeration
 
-host = "10.0.0.248"
+# Setting the target and the port
+host = '10.0.0.248'
 port = 22
 
+# Instantiating the object
 enumeration = ssh_enumeration.iniEnumSSH(host, port)
+# Executing the start() method
 enumeration.start()
 
+# Getting the result dict
 dict = enumeration.get_dict()
 print(dict)
 ```

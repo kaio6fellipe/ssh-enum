@@ -9,6 +9,11 @@
 
 # Configuration
 
+Make sure to clone this repo with the following command, this command will clone the [nmap-python submodule](https://kaio6fellipe.github.io/nmap-python/) too:
+```shell
+git clone --recurse-submodules -j8 https://github.com/kaio6fellipe/ssh-enum.git
+```
+
 Install [ssh-audit](https://github.com/jtesta/ssh-audit):
 ```shell
 pip install ssh-audit
@@ -25,7 +30,7 @@ usage: ssh-keyscan [-46cDHv] [-f file] [-p port] [-T timeout] [-t type]
                    [host | addrlist namelist]
 ```
 
-At the end, configure my [nmap-python repository](https://kaio6fellipe.github.io/nmap-python/), put the nmap folder inside the ssh-enum folder, if everything goes right, your folders will be organized that way:
+At the end, install the dependencies of my [nmap-python repository](https://kaio6fellipe.github.io/nmap-python/), if everything goes right, your folders will be organized that way:
 
 ![folders](./images/folders.png)
 

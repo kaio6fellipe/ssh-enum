@@ -1,0 +1,3 @@
+[submodule "nmap-python"]
+	path = nmap-python
+	url = https://github.com/kaio6fellipe/nmap-python.git
